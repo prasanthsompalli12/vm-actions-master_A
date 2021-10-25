@@ -18,7 +18,7 @@ jobs:
 
     - name: look for ps1 file
       run: |
-        ls '${{ env.OUTPUT_PATH }}\IaC\AzCLI'
+        ls '${{ env.OUTPUT_PATH }}\vm-actions-master\IaC\AzCLI'
 
     - name: provision virtual machine in azure
       env:
@@ -27,7 +27,7 @@ jobs:
         SERVER_NAME: githubactions
         ADMIN_LOGIN: sarah
       run: >
-        powershell -command "& '${{ env.OUTPUT_PATH }}\IaC\AzCLI\vmcreation.ps1'" 
+        powershell -command "& '${{ env.OUTPUT_PATH }}\vm-actions-master\IaC\AzCLI\vmcreation.ps1'" 
         -servicePrincipal ${{ secrets.SERVICE_PRINCIPAL_APPID }}
         -servicePrincipalSecret ${{ secrets.SERVICE_PRINCIPAL_SECRET }} 
         -servicePrincipalTenantId ${{ secrets.SERVICE_PRINCIPAL_TENANTID }} 
